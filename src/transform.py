@@ -46,7 +46,9 @@ def aggregate_hourly_aq(aq_raw: dict) -> dict[str, dict]:
 
     grouped: dict[str, dict[str, list]] = {}
 
-    for timestamp, pm2_5, pm10, aqi in zip(times, pm2_5_list, pm10_list, aqi_list):
+    for timestamp, pm2_5, pm10, aqi in zip(
+        times, pm2_5_list, pm10_list, aqi_list, strict=True
+    ):
         # Timestamps look like "2026-11-24T13:00" -> keep just "2026-11-24"
         date_str = timestamp.split("T")[0]
         if date_str not in grouped:
@@ -80,7 +82,9 @@ def transform_city_record(raw_record: dict, extracted_at: str) -> list[dict]:
     precips = daily_weather.get("precipitation_sum", [])
 
     rows = []
-    for date_str, t_max, t_min, precip in zip(dates, max_temps, min_temps, precips):
+    for date_str, t_max, t_min, precip in zip(
+        dates, max_temps, min_temps, precips, strict=True
+    ):
         aq_for_day = daily_aq.get(date_str, {})
         us_aqi_max = aq_for_day.get("us_aqi_max")
 
