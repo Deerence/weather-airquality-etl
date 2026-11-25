@@ -71,7 +71,46 @@ python -m src.report
 ## Sample Output
 
 ```text
-Paste your 7-Day Weather & Air Quality Summary table from `python -m src.report` here
+=== 1. 7-Day Weather & Air Quality Summary by City ===
+city      | days_recorded | avg_max_c | total_rain_mm | avg_pm2_5 | peak_us_aqi
+----------+---------------+-----------+---------------+-----------+------------
+Tokyo     | 7             | 15.0      | 5.2           | 22.9      | 106.0      
+Singapore | 7             | 31.6      | 66.0          | 14.2      | 78.0       
+London    | 7             | 8.5       | 5.9           | 11.5      | 66.0       
+
+=== 2. 3-Day Rolling Average Temperature & AQI (Window Function) ===
+city      | date       | temp_max_c | rolling_3d_temp_c | us_aqi_avg | rolling_3d_aqi
+----------+------------+------------+-------------------+------------+---------------
+London    | 2026-11-19 | 10.3       | 10.3              | 35.29      | 35.3          
+London    | 2026-11-20 | 10.3       | 10.3              | 52.88      | 44.1          
+London    | 2026-11-21 | 9.3        | 10.0              | 59.17      | 49.1          
+London    | 2026-11-22 | 8.9        | 9.5               | 57.54      | 56.5          
+London    | 2026-11-23 | 7.7        | 8.6               | 45.33      | 54.0          
+London    | 2026-11-24 | 6.9        | 7.8               | 55.17      | 52.7          
+London    | 2026-11-25 | 6.4        | 7.0               | 56.92      | 52.5          
+Singapore | 2026-11-19 | 28.4       | 28.4              | 68.0       | 68.0          
+Singapore | 2026-11-20 | 32.7       | 30.6              | 74.08      | 71.0          
+Singapore | 2026-11-21 | 29.8       | 30.3              | 55.33      | 65.8          
+Singapore | 2026-11-22 | 32.7       | 31.7              | 51.17      | 60.2          
+Singapore | 2026-11-23 | 33.2       | 31.9              | 53.67      | 53.4          
+Singapore | 2026-11-24 | 31.9       | 32.6              | 62.54      | 55.8          
+Singapore | 2026-11-25 | 32.6       | 32.6              | 60.67      | 59.0          
+Tokyo     | 2026-11-19 | 19.3       | 19.3              | 96.29      | 96.3          
+Tokyo     | 2026-11-20 | 14.6       | 16.9              | 58.46      | 77.4          
+Tokyo     | 2026-11-21 | 14.1       | 16.0              | 64.46      | 73.1          
+Tokyo     | 2026-11-22 | 13.1       | 13.9              | 99.46      | 74.1          
+Tokyo     | 2026-11-23 | 13.1       | 13.4              | 84.29      | 82.7          
+Tokyo     | 2026-11-24 | 17.4       | 14.5              | 75.25      | 86.3          
+Tokyo     | 2026-11-25 | 13.3       | 14.6              | 64.29      | 74.6          
+
+=== 3. Air Quality Health Category & Rainy-Day Breakdown ===
+city      | aqi_category                   | days | rainy_days
+----------+--------------------------------+------+-----------
+London    | Moderate                       | 5    | 1         
+London    | Good                           | 2    | 1         
+Singapore | Moderate                       | 7    | 7         
+Tokyo     | Moderate                       | 5    | 1         
+Tokyo     | Unhealthy for Sensitive Groups | 2    | 0    
 ```
 
 ## Tech Stack
